@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Color Changing Boxes</title>
+<style>
+  .box {
+    width: 100px;
+    height: 100px;
+   
+    display: inline-block;
+    transition: background-color 0.2s ease;
+  }
+</style>
+</head>
+<body>
+  <div class="box" id="box1"></div>
+  <div class="box" id="box2"></div>
+  <div class="box" id="box3"></div>
+  <div class="box" id="box4"></div>
+  <div class="box" id="box5"></div>
+
+<script>
+  // Function to change the color of a box randomly
+  function changeColor(box) {
+    var colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+    var randomColor = colors[Math.floor(Math.random() * colors.length)];
+    box.style.backgroundColor = randomColor;
+  }
+
+  // Function to change the color of each box after 5 seconds
+  function changeColorAfterTimeout() {
+    var boxes = document.querySelectorAll('.box');
+    boxes.forEach(function(box, index) {
+      setTimeout(function() {
+        changeColor(box);
+      }, index * 2000); // Change color after 5 seconds * index
+    });
+  }
+
+  // Call the function to start changing colors after page load
+  changeColorAfterTimeout();
+</script>
+</body>
+</html>
